@@ -1,0 +1,2423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Writer's Room — Where stories brew above the sea.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --espresso:#111111;
+  --beige:#D9C7A3;
+  --cream:#F5F1EA;
+  --ocean:#4A6C8C;
+  --gold:#B89B72;
+  --gold-light:#D4B896;
+  --surface:#1A1714;
+  --surface2:#221F1B;
+  --text-muted:#8A7E6F;
+}
+html{scroll-behavior:smooth}
+body{background:var(--espresso);color:var(--cream);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:default}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 4rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(17,17,17,0.9),transparent);backdrop-filter:blur(2px)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;letter-spacing:0.05em;color:var(--cream)}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:0.6rem 1.4rem;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;font-family:'Inter',sans-serif}
+.nav-cta:hover{background:var(--gold);color:var(--espresso)}
+
+/* HERO */
+.hero{
+  height:100vh;
+  position:relative;
+
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+
+  overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse at 30% 60%,rgba(74,108,140,0.15) 0%,transparent 60%),
+  radial-gradient(ellipse at 80% 20%,rgba(184,155,114,0.08) 0%,transparent 50%),
+  linear-gradient(165deg,#0a0a0a 0%,#141210 30%,#1a1510 60%,#0d0d0d 100%);
+z-index:0}
+.hero-grain{position:absolute;inset:0;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");z-index:1}
+.hero-horizon{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(74,108,140,0.06),transparent);z-index:1}
+.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 30%,rgba(0,0,0,0.7) 100%);z-index:2}
+
+/* Steam particles */
+.steam{position:absolute;bottom:35%;left:50%;transform:translateX(-50%);z-index:3}
+.steam-particle{position:absolute;width:3px;border-radius:50%;background:rgba(245,241,234,0.12);animation:steamRise 4s ease-in infinite}
+.steam-particle:nth-child(1){left:-15px;width:2px;height:30px;animation-delay:0s;animation-duration:3.5s}
+.steam-particle:nth-child(2){left:5px;width:3px;height:40px;animation-delay:0.8s}
+.steam-particle:nth-child(3){left:25px;width:2px;height:25px;animation-delay:1.6s;animation-duration:4.5s}
+@keyframes steamRise{0%{opacity:0;transform:translateY(0) scaleX(1)}30%{opacity:0.6}100%{opacity:0;transform:translateY(-80px) scaleX(2)}}
+
+.hero-content{
+  position:relative;
+  z-index:5;
+
+  width:100%;
+  max-width:1400px;
+
+  padding-left:4vw;
+
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  margin-left:2rem;
+
+  text-align:left;
+}
+
+@keyframes heroFadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{font-family:'Inter',sans-serif;font-size:0.7rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.3s ease-out forwards}
+.hero-title{
+  font-family:'Playfair Display',serif;
+
+  font-size:clamp(2.8rem,5.5vw,5rem);
+
+  line-height:1;
+
+  font-weight:500;
+
+  color:var(--cream);
+
+  margin-bottom:1.5rem;
+
+  max-width:500px;
+
+  letter-spacing:-0.05em;
+
+  opacity:0;
+  animation:fadeUp 1s 0.6s ease-out forwards;
+}
+.hero-title em{
+  font-style:italic;
+  color:var(--gold);
+
+  display:block;
+
+  margin-left:4rem;
+
+  font-weight:400;
+}
+.hero-sub{
+  font-family:'Inter',sans-serif;
+
+  font-size:1rem;
+
+  color:rgba(245,241,234,0.72);
+
+  line-height:1.9;
+
+  max-width:520px;
+
+  margin-bottom:3rem;
+
+  text-shadow:0 2px 10px rgba(0,0,0,0.35);
+
+  opacity:0;
+  animation:fadeUp 1s 0.9s ease-out forwards;
+}
+.hero-btns{
+  display:flex;
+
+  gap:1rem;
+
+  justify-content:flex-start;
+
+  flex-wrap:wrap;
+
+  opacity:0;
+  animation:fadeUp 1s 1.2s ease-out forwards;
+}
+.btn-primary{background:var(--gold);color:var(--espresso);padding:0.9rem 2.2rem;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:500;transition:all 0.3s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--cream);padding:0.9rem 2.2rem;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;border:1px solid rgba(245,241,234,0.25);cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.3s;text-decoration:none;display:inline-block}
+.btn-ghost:hover{border-color:var(--cream)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.scroll-indicator{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:var(--text-muted);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;animation:scrollBob 2s ease-in-out infinite}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,transparent,var(--gold));animation:scrollLineGrow 2s ease-in-out infinite}
+@keyframes scrollBob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+@keyframes scrollLineGrow{0%,100%{height:40px;opacity:0.5}50%{height:55px;opacity:1}}
+
+/* ABOUT */
+.about{
+  position:relative;
+
+  padding:10rem 6vw;
+
+  display:grid;
+
+  grid-template-columns:1.1fr 1fr;
+
+  gap:7rem;
+
+  align-items:center;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.82),
+      rgba(0,0,0,0.88)
+    ),
+    url("about-bg.png");
+
+  background-size:cover;
+
+  background-position:center;
+
+  background-attachment:fixed;
+}
+.about::before{
+  content:'';
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(184,155,114,0.08),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(74,108,140,0.10),
+      transparent 40%
+    );
+
+  z-index:0;
+}
+.about-visual,
+.about-text{
+  position:relative;
+  z-index:2;
+}
+.about-visual{position:relative}
+.about-img-frame{width:100%;aspect-ratio:3/4;background:var(--surface);position:relative;overflow:hidden}
+.about-img-inner{position:absolute;inset:0;background:linear-gradient(135deg,#1a1510 0%,#0d1a22 50%,#111111 100%)}
+.about-img-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.about-img-text{font-family:'Playfair Display',serif;font-size:6rem;color:rgba(184,155,114,0.08);font-weight:700;letter-spacing:-0.05em}
+.about-accent-box{position:absolute;top:-1.5rem;right:-1.5rem;width:60%;aspect-ratio:1;background:linear-gradient(135deg,rgba(74,108,140,0.15),rgba(74,108,140,0.05));border:1px solid rgba(74,108,140,0.2)}
+.about-badge{position:absolute;bottom:-1.5rem;left:-1.5rem;background:var(--gold);color:var(--espresso);padding:1.2rem;min-width:140px;text-align:center}
+.about-badge-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;display:block}
+.about-badge-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;display:block;margin-top:0.2rem}
+.about-text .eyebrow{font-size:0.7rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
+.about-text h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1.2;margin-bottom:2rem;font-weight:500}
+.about-text h2 em{font-style:italic;color:var(--gold)}
+.about-text p{color:var(--text-muted);line-height:1.9;margin-bottom:1.5rem;font-size:0.95rem}
+.about-stats{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(217,199,163,0.1)}
+.stat{text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);font-weight:600;display:block}
+.stat-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);display:block;margin-top:0.3rem}
+.about-real-img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  border-radius:2px;
+
+  filter:
+    brightness(0.85)
+    contrast(1.05);
+
+  transition:transform 0.8s ease;
+}
+
+.about-img-frame{
+  overflow:hidden;
+}
+
+.about-img-frame:hover .about-real-img{
+  transform:scale(1.03);
+}
+/* EXPERIENCES */
+/* EXPERIENCE SECTION */
+.experiences{
+position:relative;
+
+padding:8rem 5vw;
+
+background-color:#000000;
+
+background-image:
+radial-gradient(
+circle at top left,
+rgba(184,155,114,0.08),
+transparent 25%
+),
+radial-gradient(
+circle at bottom right,
+rgba(95,62,35,0.10),
+transparent 30%
+);
+
+overflow:hidden;
+}
+.experiences::before{
+content:'';
+
+position:absolute;
+
+inset:0;
+
+background:
+linear-gradient(
+to bottom,
+rgba(255,255,255,0.01),
+rgba(0,0,0,0.05)
+);
+
+pointer-events:none;
+}
+
+.experiences > *{
+position:relative;
+z-index:2;
+}
+
+
+/* EXPERIENCE GRID */
+.exp-grid{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:1.2rem;
+}
+
+/* CARD */
+.exp-card{
+background:rgba(15,10,8,0.88);
+
+border:1px solid rgba(255,255,255,0.05);
+
+backdrop-filter:blur(6px);
+
+border-radius:10px;
+
+overflow:hidden;
+
+transition:0.4s ease;
+}
+
+.exp-card:hover{
+transform:translateY(-6px);
+
+border-color:rgba(184,155,114,0.25);
+}
+
+
+.exp-card:hover{
+  transform:translateY(-5px);
+
+  border-color:rgba(212,184,150,0.2);
+}
+
+/* IMAGE */
+.exp-card img{
+  width:100%;
+
+  height:220px;
+
+  object-fit:cover;
+
+  display:block;
+
+  opacity:0.92;
+
+  transition:0.5s ease;
+}
+
+.exp-card:hover img{
+  transform:scale(1.03);
+}
+
+/* CONTENT */
+.exp-content{
+  padding:1.6rem;
+}
+
+.exp-number{
+  color:#b89b72;
+
+  font-size:0.75rem;
+
+  letter-spacing:3px;
+
+  margin-bottom:0.8rem;
+
+  display:block;
+}
+
+.exp-card h3{
+  font-family:'Playfair Display',serif;
+
+  font-size:1.7rem;
+
+  margin-bottom:0.9rem;
+
+  color:#f5f1ea;
+}
+
+.exp-card p{
+  color:#9e8f81;
+
+  font-size:0.92rem;
+
+  line-height:1.8;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+  .exp-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .exp-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+/* MOBILE */
+@media(max-width:900px){
+
+  .exp-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .exp-grid{
+    grid-template-columns:1fr;
+  }
+
+  .exp-card{
+    min-height:auto;
+  }
+
+  .exp-card img{
+    height:240px;
+  }
+
+}
+/* MENU */
+.menu{
+padding:8rem 4rem;
+background:#000000;
+}
+
+.menu-cats{
+display:flex;
+gap:0.5rem;
+justify-content:center;
+margin-bottom:4rem;
+flex-wrap:wrap;
+}
+
+.menu-cat{
+background:transparent;
+border:1px solid rgba(217,199,163,0.15);
+color:var(--text-muted);
+padding:0.6rem 1.4rem;
+font-size:0.72rem;
+letter-spacing:0.15em;
+text-transform:uppercase;
+cursor:pointer;
+transition:all 0.3s;
+font-family:'Inter',sans-serif;
+}
+
+.menu-cat.active,
+.menu-cat:hover{
+border-color:var(--gold);
+color:var(--gold);
+}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:1.5rem;
+}
+
+/* CARD */
+.menu-card{
+background:#14110f;
+
+border:1px solid rgba(217,199,163,0.08);
+
+padding:1rem;
+
+transition:all 0.4s;
+
+cursor:pointer;
+
+position:relative;
+
+overflow:hidden;
+
+border-radius:10px;
+}
+
+.menu-card::after{
+content:'';
+
+position:absolute;
+
+bottom:0;
+
+left:0;
+
+right:0;
+
+height:2px;
+
+background:var(--gold);
+
+transform:scaleX(0);
+
+transition:transform 0.4s;
+}
+
+.menu-card:hover{
+border-color:rgba(184,155,114,0.25);
+
+transform:translateY(-4px);
+}
+
+.menu-card:hover::after{
+transform:scaleX(1);
+}
+
+/* IMAGE */
+.menu-img{
+width:100%;
+
+aspect-ratio:1/1;
+
+overflow:hidden;
+
+border-radius:8px;
+
+margin-bottom:1.2rem;
+
+background:#111;
+}
+
+.menu-img img{
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+display:block;
+
+transition:0.5s ease;
+}
+
+.menu-card:hover .menu-img img{
+transform:scale(1.04);
+}
+
+/* TEXT */
+.menu-card-tag{
+font-size:0.65rem;
+
+letter-spacing:0.2em;
+
+text-transform:uppercase;
+
+color:var(--ocean);
+
+margin-bottom:0.8rem;
+
+display:block;
+}
+
+.menu-card h3{
+font-family:'Playfair Display',serif;
+
+font-size:1.4rem;
+
+margin-bottom:0.7rem;
+
+font-weight:500;
+}
+
+.menu-card p{
+color:var(--text-muted);
+
+font-size:0.9rem;
+
+line-height:1.7;
+
+margin-bottom:1.5rem;
+}
+
+.menu-card-footer{
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+}
+
+.menu-price{
+font-family:'Playfair Display',serif;
+
+font-size:1.1rem;
+
+color:var(--gold);
+}
+
+.menu-new{
+font-size:0.6rem;
+
+letter-spacing:0.15em;
+
+text-transform:uppercase;
+
+border:1px solid rgba(74,108,140,0.4);
+
+color:var(--ocean);
+
+padding:0.3rem 0.7rem;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+.menu-grid{
+grid-template-columns:1fr;
+}
+
+}
+/* =========================
+GALLERY SECTION
+========================= */
+
+.gallery{
+padding:8rem 4rem;
+background:#000;
+overflow:hidden;
+}
+
+/* =========================
+GRID LAYOUT
+========================= */
+
+.gallery-grid{
+display:grid;
+
+grid-template-columns:2fr 1fr 1fr;
+
+grid-template-rows:260px 260px;
+
+gap:18px;
+
+max-width:1600px;
+
+margin:auto;
+}
+
+/* BIG LEFT IMAGE */
+.gallery-item:nth-child(1){
+grid-row:1 / 3;
+}
+
+/* WIDE BOTTOM IMAGE */
+.gallery-item:nth-child(4){
+grid-column:2 / 4;
+}
+
+/* =========================
+IMAGE CARD
+========================= */
+
+.gallery-item{
+position:relative;
+
+overflow:hidden;
+
+border-radius:18px;
+
+background:#111;
+
+border:1px solid rgba(255,255,255,0.06);
+
+box-shadow:
+0 12px 30px rgba(0,0,0,0.45);
+
+transition:0.4s ease;
+}
+
+/* HOVER EFFECT */
+.gallery-item:hover{
+transform:translateY(-6px);
+
+border-color:rgba(184,155,114,0.25);
+
+box-shadow:
+0 20px 50px rgba(0,0,0,0.65);
+}
+
+/* =========================
+IMAGE
+========================= */
+
+.gallery-item img{
+width:100%;
+height:100%;
+
+display:block;
+
+object-fit:cover;
+
+transition:
+transform 0.8s ease,
+filter 0.8s ease;
+
+filter:
+brightness(0.9)
+contrast(1.05)
+saturate(1.04);
+}
+
+/* IMAGE HOVER */
+.gallery-item:hover img{
+transform:scale(1.05);
+
+filter:
+brightness(1)
+contrast(1.08)
+saturate(1.08);
+}
+
+/* =========================
+OVERLAY
+========================= */
+
+.gallery-overlay{
+position:absolute;
+
+inset:0;
+
+background:
+linear-gradient(
+to top,
+rgba(0,0,0,0.75),
+transparent 60%
+);
+
+display:flex;
+
+align-items:flex-end;
+
+padding:1.5rem;
+}
+
+/* =========================
+LABEL
+========================= */
+
+.gallery-label{
+font-size:0.72rem;
+
+letter-spacing:0.24em;
+
+text-transform:uppercase;
+
+color:#f5f1ea;
+
+font-weight:500;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:900px){
+
+.gallery{
+padding:6rem 2rem;
+}
+
+.gallery-grid{
+grid-template-columns:1fr 1fr;
+
+grid-template-rows:auto;
+
+gap:14px;
+}
+
+.gallery-item:nth-child(1){
+grid-row:auto;
+}
+
+.gallery-item:nth-child(4){
+grid-column:auto;
+}
+
+}
+
+/* =========================
+SMALL MOBILE
+========================= */
+
+@media(max-width:600px){
+
+.gallery{
+padding:5rem 1rem;
+}
+
+.gallery-grid{
+grid-template-columns:1fr;
+gap:12px;
+}
+
+.gallery-item{
+height:260px;
+border-radius:14px;
+}
+
+}
+
+/* =========================
+REVIEWS SECTION
+========================= */
+
+.reviews{
+padding:8rem 0;
+
+background:
+radial-gradient(circle at top left,
+rgba(184,155,114,0.06),
+transparent 30%),
+
+radial-gradient(circle at bottom right,
+rgba(74,108,140,0.05),
+transparent 35%),
+
+#050505;
+
+overflow-x:hidden;
+overflow-y:visible;
+
+position:relative;
+}
+
+.reviews::before{
+content:'';
+
+position:absolute;
+
+inset:0;
+
+background:
+radial-gradient(
+circle at top left,
+rgba(184,155,114,0.06),
+transparent 30%
+),
+
+radial-gradient(
+circle at bottom right,
+rgba(74,108,140,0.05),
+transparent 35%
+),
+
+linear-gradient(
+to bottom,
+rgba(255,255,255,0.015),
+transparent 20%,
+transparent 80%,
+rgba(255,255,255,0.015)
+);
+
+pointer-events:none;
+
+z-index:1;
+}
+
+/* SIDE FADE EFFECT */
+.reviews::after{
+content:'';
+
+position:absolute;
+
+inset:0;
+
+background:
+linear-gradient(
+90deg,
+#050505 0%,
+transparent 10%,
+transparent 90%,
+#050505 100%
+);
+
+pointer-events:none;
+
+z-index:4;
+}
+/* HEADER */
+.reviews .section-header{
+padding:0 4rem;
+
+margin-bottom:4rem;
+}
+
+/* RATING */
+.reviews-rating{
+text-align:center;
+
+margin-bottom:4rem;
+}
+
+.rating-num{
+font-family:'Playfair Display',serif;
+
+font-size:5rem;
+
+color:var(--gold);
+
+display:block;
+
+line-height:1;
+
+margin-bottom:0.5rem;
+}
+
+.stars{
+display:flex;
+
+justify-content:center;
+
+gap:0.3rem;
+
+margin-bottom:1rem;
+
+font-size:1.2rem;
+
+color:var(--gold);
+}
+
+.rating-count{
+color:#8f8579;
+
+font-size:0.9rem;
+
+letter-spacing:0.08em;
+}
+
+/* =========================
+HORIZONTAL SCROLL*/
+.reviews-wrapper{
+width:100%;
+
+overflow-x:auto;
+overflow-y:hidden;
+
+padding:0 4rem 2rem;
+
+cursor:grab;
+
+scroll-behavior:smooth;
+
+-webkit-overflow-scrolling:touch;
+
+scrollbar-width:none;
+}
+
+.reviews-wrapper:active{
+cursor:grabbing;
+}
+
+.reviews-wrapper::-webkit-scrollbar{
+display:none;
+}
+
+.reviews-grid{
+display:flex;
+
+gap:2rem;
+
+width:max-content;
+
+padding-right:4rem;
+}
+
+/* =========================
+CARD
+========================= */
+
+.review-card{
+min-width:420px;
+
+max-width:420px;
+
+flex-shrink:0;
+background:
+linear-gradient(
+180deg,
+rgba(20,16,14,0.95),
+rgba(8,8,8,0.98)
+);
+
+border:1px solid rgba(255,255,255,0.06);
+
+border-radius:18px;
+
+padding:2.5rem;
+
+position:relative;
+
+overflow:hidden;
+
+transition:0.45s ease;
+}
+
+.review-card{
+backdrop-filter:blur(14px);
+
+box-shadow:
+0 10px 40px rgba(0,0,0,0.35);
+
+transition:
+transform 0.5s ease,
+box-shadow 0.5s ease,
+border-color 0.5s ease;
+}
+
+.review-card:hover{
+
+transform:
+translateY(-10px)
+scale(1.015);
+
+box-shadow:
+0 30px 80px rgba(0,0,0,0.55);
+
+border-color:
+rgba(184,155,114,0.28);
+}
+/* luxury glow border */
+.review-card::before{
+content:'';
+
+position:absolute;
+
+inset:0;
+
+background:
+linear-gradient(
+135deg,
+rgba(184,155,114,0.08),
+transparent 30%,
+transparent 70%,
+rgba(74,108,140,0.06)
+);
+
+pointer-events:none;
+}
+
+.review-quote{
+position:absolute;
+
+top:12px;
+left:20px;
+
+font-size:5rem;
+
+font-family:'Playfair Display',serif;
+
+color:rgba(184,155,114,0.06);
+
+line-height:1;
+
+pointer-events:none;
+}
+.review-card::after{
+content:'';
+
+position:absolute;
+
+inset:-1px;
+
+border-radius:22px;
+
+padding:1px;
+
+background:
+linear-gradient(
+135deg,
+rgba(184,155,114,0.25),
+transparent 30%,
+transparent 70%,
+rgba(74,108,140,0.18)
+);
+
+-webkit-mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+
+-webkit-mask-composite:xor;
+
+pointer-events:none;
+
+opacity:0;
+
+transition:0.5s ease;
+}
+
+.review-card:hover::after{
+opacity:1;
+}
+
+/* HOVER */
+.review-card:hover{
+transform:translateY(-8px);
+
+border-color:rgba(184,155,114,0.22);
+
+box-shadow:
+0 25px 60px rgba(0,0,0,0.55);
+}
+
+/* STARS */
+.review-stars{
+display:flex;
+
+gap:0.25rem;
+
+font-size:0.9rem;
+
+color:var(--gold);
+
+margin-bottom:1.4rem;
+}
+
+/* REVIEW TEXT */
+.review-text{
+color:#a99b8d;
+
+font-size:1rem;
+
+line-height:2;
+
+font-style:italic;
+
+margin-bottom:2rem;
+}
+
+/* AUTHOR */
+.review-author{
+display:flex;
+
+align-items:center;
+
+gap:1rem;
+}
+
+.review-avatar{
+width:46px;
+
+height:46px;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:#171310;
+
+border:1px solid rgba(184,155,114,0.15);
+
+color:var(--gold);
+
+font-size:0.85rem;
+
+font-weight:600;
+
+flex-shrink:0;
+}
+
+.review-name{
+display:block;
+
+font-size:1rem;
+
+color:#f5f1ea;
+
+font-weight:500;
+
+margin-bottom:0.2rem;
+}
+
+.review-date{
+font-size:0.8rem;
+
+color:#8a7e6f;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.reviews{
+padding:6rem 0;
+}
+
+.reviews .section-header{
+padding:0 1.2rem;
+}
+
+.reviews-wrapper{
+padding:0 1.2rem 1rem 1.2rem;
+}
+
+.review-card{
+min-width:420px;
+
+max-width:420px;
+
+flex-shrink:0;
+
+background:
+linear-gradient(
+180deg,
+rgba(22,18,16,0.96),
+rgba(8,8,8,0.98)
+);
+
+border:1px solid rgba(255,255,255,0.06);
+
+border-radius:22px;
+
+padding:2.5rem;
+
+position:relative;
+
+overflow:hidden;
+
+backdrop-filter:blur(16px);
+
+transform:scale(0.96);
+
+opacity:0.82;
+
+transition:
+transform 0.55s cubic-bezier(.19,1,.22,1),
+opacity 0.45s ease,
+border-color 0.45s ease,
+box-shadow 0.45s ease,
+filter 0.45s ease;
+
+filter:blur(0px);
+}
+/* DEFAULT DIM EFFECT */
+.reviews-grid:hover .review-card{
+opacity:0.45;
+
+transform:scale(0.92);
+
+filter:blur(1px);
+}
+
+/* ACTIVE POP CARD */
+.reviews-grid .review-card:hover{
+
+opacity:1;
+
+transform:
+translateY(-14px)
+scale(1.03);
+
+filter:blur(0px);
+
+z-index:20;
+
+border-color:
+rgba(184,155,114,0.35);
+
+box-shadow:
+0 35px 90px rgba(0,0,0,0.65);
+}
+
+.rating-num{
+font-size:4rem;
+}
+
+}
+/* RESERVATION */
+.reservation{padding:8rem 4rem;background:var(--surface);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.res-text .eyebrow{font-size:0.7rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.5rem}
+.res-text h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);margin-bottom:1.5rem;font-weight:500}
+.res-text h2 em{font-style:italic;color:var(--gold)}
+.res-text p{color:var(--text-muted);line-height:1.9;margin-bottom:2rem;font-size:0.92rem}
+.res-info{margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(217,199,163,0.1)}
+.res-info p{font-size:0.82rem;color:var(--text-muted);display:flex;gap:0.7rem;align-items:flex-start;margin-bottom:0.8rem}
+.res-info strong{color:var(--cream);font-weight:500}
+.res-form{background:var(--surface2);border:1px solid rgba(217,199,163,0.08);padding:3rem}
+.form-group{margin-bottom:1.5rem}
+.form-group label{display:block;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.7rem}
+.form-group input,.form-group select{width:100%;background:var(--espresso);border:1px solid rgba(217,199,163,0.12);color:var(--cream);padding:0.85rem 1rem;font-family:'Inter',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.3s;-webkit-appearance:none}
+.form-group input:focus,.form-group select:focus{border-color:rgba(184,155,114,0.4)}
+.form-group select option{background:var(--espresso)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-submit{width:100%;background:var(--gold);color:var(--espresso);border:none;padding:1.1rem;font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;font-weight:500;margin-top:0.5rem;transition:all 0.3s}
+.form-submit:hover{background:var(--gold-light)}
+
+/* CONTACT */
+.contact{padding:8rem 4rem;background:var(--espresso);display:grid;grid-template-columns:1fr 1fr;gap:6rem}
+.contact-text .eyebrow{font-size:0.7rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.5rem}
+.contact-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:2rem;font-weight:500}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem}
+.contact-item{display:flex;gap:1.2rem;align-items:flex-start}
+.contact-item-icon{width:40px;height:40px;border:1px solid rgba(184,155,114,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;color:var(--gold)}
+.contact-item-text label{display:block;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.4rem}
+.contact-item-text p{color:var(--cream);font-size:0.9rem;line-height:1.6}
+.contact-amenities{margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(217,199,163,0.1)}
+.amenities-title{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.2rem}
+.amenities-tags{display:flex;flex-wrap:wrap;gap:0.6rem}
+.tag{border:1px solid rgba(217,199,163,0.12);color:var(--text-muted);padding:0.4rem 0.9rem;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase}
+.map-frame{background:var(--surface);border:1px solid rgba(217,199,163,0.08);height:380px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.map-inner{position:absolute;inset:0;background:linear-gradient(135deg,#0d1a22,#111111)}
+.map-text{text-align:center;z-index:1;position:relative}
+.map-text h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:0.5rem;color:var(--cream)}
+.map-text p{color:var(--text-muted);font-size:0.82rem;line-height:1.7;margin-bottom:1.5rem}
+.map-btn{display:inline-block;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:0.7rem 1.5rem;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all 0.3s}
+.map-btn:hover{background:var(--gold);color:var(--espresso)}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid rgba(217,199,163,0.08);padding:4rem;display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.1rem}
+.footer-logo span{color:var(--gold)}
+.footer-copy{color:var(--text-muted);font-size:0.75rem;letter-spacing:0.1em}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{color:var(--text-muted);text-decoration:none;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s}
+.footer-links a:hover{color:var(--gold)}
+
+/* DIVIDERS */
+.divider-line{width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);margin:0 auto}
+
+/* SCROLL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:1.2rem 2rem}
+  .nav-links{display:none}
+  .about,.reservation,.contact{grid-template-columns:1fr;gap:3rem}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-item:nth-child(1){grid-column:span 2}
+  .gallery-item:nth-child(5){grid-column:span 1}
+  section{padding:5rem 2rem}
+  .about,.reservation,.contact{padding:5rem 2rem}
+  .experiences,.menu,.gallery,.reviews{padding:5rem 2rem}
+  footer{flex-direction:column;gap:1.5rem;text-align:center}
+}
+
+/* HERO IMAGE SLIDER */
+.hero-slider{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(0,0,0,0.78) 0%,
+      rgba(0,0,0,0.55) 30%,
+      rgba(0,0,0,0.18) 55%,
+      rgba(0,0,0,0.05) 100%
+    );
+
+  z-index:2;
+}
+
+.slide{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transform:scale(1.08);
+  transition:
+    opacity 1.8s ease,
+    transform 7s ease;
+}
+
+.slide.active{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* Dark cinematic overlay */
+.slide::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.45),
+      rgba(0,0,0,0.55)
+    );
+}
+
+.about-img-frame{
+  width:100%;
+
+  aspect-ratio:3/4;
+
+  overflow:hidden;
+
+  position:relative;
+
+  border-radius:2px;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.45);
+
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+.about-real-img{
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+  filter:
+    brightness(0.82)
+    contrast(1.05);
+
+  transition:transform 0.8s ease;
+}
+
+.about-img-frame:hover .about-real-img{
+  transform:scale(1.04);
+}
+
+/* Floating orbs for ambiance */
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;animation:orbFloat 8s ease-in-out infinite}
+@keyframes orbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">The Writer's <span>Room</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">Story</a></li>
+    <li><a href="#experiences">Experience</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Visit</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('reservation').scrollIntoView({behavior:'smooth'})">Reserve</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-overlay"></div>
+ 
+  <!-- HERO SLIDER -->
+<div class="hero-slider">
+  <div class="slide active" style="background-image:url('hero1.png')"></div>
+  <div class="slide" style="background-image:url('hero2.png')"></div>
+  <div class="slide" style="background-image:url('hero3.png')"></div>
+  
+</div>
+  <div class="hero-grain"></div>
+  <div class="hero-horizon"></div>
+  <div class="hero-vignette"></div>
+  <div class="steam">
+    <div class="steam-particle"></div>
+    <div class="steam-particle"></div>
+    <div class="steam-particle"></div>
+  </div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Rushikonda, Visakhapatnam · Est. 2024</span>
+    <h1 class="hero-title">Where stories brew<br><em>above the sea.</em></h1>
+    <p class="hero-sub">A cinematic café experience overlooking Rushikonda's coastline. Coffee, conversations, and coastlines — where every visit becomes a story worth telling.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#reservation" onclick="document.getElementById('reservation').scrollIntoView({behavior:'smooth'});return false">Reserve a Table</a>
+      <a class="btn-ghost" href="#menu" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'});return false">Explore the Menu</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual reveal">
+    <div class="about-accent-box"></div>
+    <div class="about-img-frame">
+
+  <!-- <img src="about-main.jpg" class="about-real-img" -->
+
+<div class="about-img-frame">
+
+  <img src="about.png" class="about-real-img">
+
+</div>
+    </div>
+    <div class="about-badge">
+      <span class="about-badge-num">4.1★</span>
+      <span class="about-badge-label">Google Rating</span>
+    </div>
+  </div>
+  <div class="about-text reveal reveal-delay-2">
+    <span class="eyebrow">Our Story</span>
+    <h2>A hilltop escape for <em>creators</em> and coffee lovers</h2>
+    <p>Perched above the shimmering Rushikonda coastline on Ramanaidu Studios Road, The Writer's Room was born from a simple belief — that great ideas deserve great coffee, and both deserve a breathtaking view.</p>
+    <p>We are more than a café. We are a sanctuary for the creative soul. A workspace, a date destination, a social ritual — where the sea breeze and the scent of freshly brewed espresso conspire to unlock something extraordinary in you.</p>
+    <p>Our hilltop setting, curated ambience, and premium culinary craft make every visit feel like the opening scene of something beautiful.</p>
+    <div class="about-stats">
+      <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Sea Views</span></div>
+      <div class="stat"><span class="stat-num">2+</span><span class="stat-label">Years of Stories</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Hilltop Bliss</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="experiences" id="experiences">
+
+<div class="exp-grid">
+  <div class="section-header reveal">
+    <span class="eyebrow">What Awaits You</span>
+    <h2>The Experience</h2>
+  </div>
+  </div>
+<div class="exp-grid">
+
+  <div class="exp-card reveal">
+
+  <img src="sea-view.png" >
+
+  <div class="exp-overlay"></div>
+
+  <div class="exp-content">
+
+    <span class="exp-number">01</span>
+
+    <h3>Sea View Terraces</h3>
+
+    <p>
+      Every seat tells a story of the horizon. Panoramic views
+      of the Bay of Bengal, framed by our open terraces and
+      ambient lighting.
+    </p>
+
+  </div>
+
+</div>
+    
+    <div class="exp-card reveal">
+
+  <img src="sunset-evening.png" >
+
+  <div class="exp-overlay"></div>
+
+  <div class="exp-content">
+
+    <span class="exp-number">02</span>
+
+    <h3>Sunset Evenings</h3>
+
+    <p>
+      Watch the Rushikonda sky transform into liquid gold
+      each evening. Our hilltop position makes every sunset a
+      private show curated just for you.
+    </p>
+
+  </div>
+
+</div>
+
+
+    <div class="exp-card reveal">
+
+  <img src="workspace.png" >
+
+  <div class="exp-overlay"></div>
+
+  <div class="exp-content">
+
+    <span class="exp-number">03</span>
+
+    <h3>Creative Workspace</h3>
+
+    <p>
+      High-speed Wi-Fi, power points at every table, and a
+      hushed atmosphere that invites deep work. Your most
+      productive office has a sea view.
+    </p>
+
+  </div>
+
+</div>
+
+    <div class="exp-card reveal">
+
+  <img src="coffee.png" >
+
+  <div class="exp-overlay"></div>
+
+  <div class="exp-content">
+
+    <span class="exp-number">04</span>
+
+    <h3>Coffee Culture</h3>
+
+    <p>
+      From single-origin cold brews to classic Americanos and
+      our signature Irish Cold Coffee — each cup is a ritual,
+      not just a beverage.
+    </p>
+
+  </div>
+
+</div>
+
+    <div class="exp-card reveal">
+
+  <img src="romantic.png" >
+
+  <div class="exp-overlay"></div>
+
+  <div class="exp-content">
+
+    <span class="exp-number">05</span>
+
+    <h3>Romantic Ambience</h3>
+
+    <p>
+      Warm amber lighting, intimate corners, and the sound of
+      waves below. The Writer's Room is Visakhapatnam's
+      most romantic café destination.
+    </p>
+
+  </div>
+
+</div>
+
+    <div class="exp-card reveal">
+
+  <img src="social.png" >
+
+  <div class="exp-overlay"></div>
+
+  <div class="exp-content">
+
+    <span class="exp-number">06</span>
+
+    <h3>Social Gatherings</h3>
+
+    <p>
+      Birthdays, creative meetups, team outings, or an
+      impromptu afternoon with friends — our flexible spaces
+      set the scene for your stories.
+    </p>
+
+  </div>
+</div>
+</div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="section-header reveal">
+    <span class="eyebrow">Crafted With Care</span>
+    <h2>The Menu</h2>
+  </div>
+  <div class="menu-cats reveal">
+
+<button class="menu-cat active" data-filter="all">
+All
+</button>
+
+<button class="menu-cat" data-filter="coffee">
+Coffee
+</button>
+
+<button class="menu-cat" data-filter="dessert">
+Desserts
+</button>
+
+<button class="menu-cat" data-filter="pasta">
+Pasta & Rice
+</button>
+
+<button class="menu-cat" data-filter="sandwich">
+Sandwiches
+</button>
+
+</div>
+  <div class="menu-grid">
+
+  <!-- CARD 1 -->
+
+  <div class="menu-card reveal" data-category="coffee">
+
+
+<div class="menu-img">
+  <img src="irish-coffee.png">
+</div>
+
+<span class="menu-card-tag">Signature</span>
+
+<h3>Irish Cold Coffee</h3>
+
+<p>
+  Velvety cold brew layered with cream and a whisper
+  of Irish flavour. Our most-loved signature creation.
+</p>
+
+<div class="menu-card-footer">
+  <span class="menu-price">₹ 249</span>
+  <span class="menu-new">Fan Favourite</span>
+</div>
+
+
+  </div>
+
+  <!-- CARD 2 -->
+
+  <div class="menu-card reveal reveal-delay-1" data-category="coffee">
+
+
+<div class="menu-img">
+  <img src="hilltop-americano.png">
+</div>
+
+<span class="menu-card-tag">Classic</span>
+
+<h3>Hilltop Americano</h3>
+
+<p>
+  A bold double-shot Americano with our custom house
+  blend. Clean, strong, and paired perfectly with sea air.
+</p>
+
+<div class="menu-card-footer">
+  <span class="menu-price">₹ 179</span>
+</div>
+
+
+  </div>
+
+  <!-- CARD 3 -->
+
+  <div class="menu-card reveal reveal-delay-2" data-category="dessert">
+
+
+<div class="menu-img">
+  <img src="desserts.png">
+</div>
+
+<span class="menu-card-tag">Indulgence</span>
+
+<h3>Seasonal Desserts</h3>
+
+<p>
+  Rotating selection of house-made cakes, Belgian waffles,
+  and artisan pastries. Curated fresh each day.
+</p>
+
+<div class="menu-card-footer">
+  <span class="menu-price">₹ 199+</span>
+  <span class="menu-new">Chef's Pick</span>
+</div>
+
+
+  </div>
+
+  <!-- CARD 4 -->
+
+  <div class="menu-card reveal" data-category="pasta">
+
+
+<div class="menu-img">
+  <img src="pasta.png">
+</div>
+
+<span class="menu-card-tag">Mains</span>
+
+<h3>Pasta of the Writer</h3>
+
+<p>
+  Slow-cooked arrabbiata or white sauce pasta with fresh herbs,
+  toasted garlic, and artisan sourdough on the side.
+</p>
+
+<div class="menu-card-footer">
+  <span class="menu-price">₹ 299</span>
+</div>
+
+
+  </div>
+
+  <!-- CARD 5 -->
+
+  <div class="menu-card reveal reveal-delay-1" data-category="rice">
+
+
+<div class="menu-img">
+  <img src="rice-plate.png">
+</div>
+
+<span class="menu-card-tag">Mains</span>
+
+<h3>Grilled Chicken Rice Plate</h3>
+
+<p>
+  Herb-marinated chicken over seasoned basmati with
+  house-made sauce, pickled vegetables, and a lime wedge.
+</p>
+
+<div class="menu-card-footer">
+  <span class="menu-price">₹ 349</span>
+  <span class="menu-new">Must Try</span>
+</div>
+
+
+  </div>
+
+  <!-- CARD 6 -->
+
+  <div class="menu-card reveal reveal-delay-2" data-category="sandwich">
+
+
+<div class="menu-img">
+  <img src="sandwich.png">
+</div>
+
+<span class="menu-card-tag">Snacks</span>
+
+<h3>Coastal Chicken Sandwich</h3>
+
+<p>
+  Crispy chicken with coastal spice rub, housemade aioli,
+  pickled slaw on a brioche bun. Served with seasoned fries.
+</p>
+
+<div class="menu-card-footer">
+  <span class="menu-price">₹ 279</span>
+</div>
+
+
+  </div>
+
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="section-header reveal">
+    <span class="eyebrow">Visual Stories</span>
+    <h2>The Atmosphere</h2>
+  </div>
+  <div class="gallery-grid reveal">
+
+  <div class="gallery-item">
+    <img src="gallery1.png">
+    <div class="gallery-overlay">
+      <span class="gallery-label">Sea View</span>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="gallery2.png">
+    <div class="gallery-overlay">
+      <span class="gallery-label">Coffee Rituals</span>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="gallery3.png">
+    <div class="gallery-overlay">
+      <span class="gallery-label">Golden Hour</span>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="gallery4.png">
+    <div class="gallery-overlay">
+      <span class="gallery-label">Writers Corner</span>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="gallery5.png">
+    <div class="gallery-overlay">
+      <span class="gallery-label">Evening Ambience</span>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="gallery6.png">
+    <div class="gallery-overlay">
+      <span class="gallery-label">Social Nights</span>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+
+  <div class="section-header reveal">
+    <span class="eyebrow">What People Say</span>
+    <h2>Guest Stories</h2>
+  </div>
+
+  <div class="reviews-rating reveal">
+    <span class="rating-num">4.1</span>
+    <div class="stars">★★★★☆</div>
+    <p class="rating-count">Based on 200+ Google Reviews</p>
+  </div>
+
+  <div class="reviews-wrapper">
+
+    <div class="reviews-grid">
+
+      <!-- CARD 1 -->
+      <div class="review-card reveal">
+        <div class="review-quote">“</div>
+        <div class="review-stars">★★★★★</div>
+
+        <p class="review-text">
+          The view alone is worth the visit. I came to work
+          on my screenplay and ended up spending five hours
+          just staring at the sea with an Irish Cold Coffee in hand.
+        </p>
+
+        <div class="review-author">
+          <div class="review-avatar">AK</div>
+
+          <div>
+            <span class="review-name">Aakash K.</span>
+            <span class="review-date">
+              Google Review · April 2025
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+
+        <p class="review-text">
+          Best café in Vizag, no competition.
+          Perfect for dates and sunsets.
+        </p>
+
+        <div class="review-author">
+          <div class="review-avatar">PS</div>
+
+          <div>
+            <span class="review-name">Priya S.</span>
+            <span class="review-date">
+              Google Review · March 2025
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★☆</div>
+
+        <p class="review-text">
+          Sunset views are unreal.
+          Premium experience worth every rupee.
+        </p>
+
+        <div class="review-author">
+          <div class="review-avatar">RV</div>
+
+          <div>
+            <span class="review-name">Rohit V.</span>
+            <span class="review-date">
+              Google Review · February 2025
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- CARD 4 -->
+<div class="review-card reveal">
+  <div class="review-stars">★★★★★</div>
+
+  <p class="review-text">
+    Came here during golden hour and honestly forgot
+    the rest of Vizag existed. The ambience feels like
+    a luxury resort café in Bali.
+  </p>
+
+  <div class="review-author">
+    <div class="review-avatar">NV</div>
+
+    <div>
+      <span class="review-name">Niharika V.</span>
+      <span class="review-date">
+        Google Review · January 2025
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- CARD 5 -->
+<div class="review-card reveal">
+  <div class="review-stars">★★★★★</div>
+
+  <p class="review-text">
+    Easily the most aesthetic café in Vizag.
+    Every corner feels cinematic and peaceful.
+    Perfect for creators and late evening conversations.
+  </p>
+
+  <div class="review-author">
+    <div class="review-avatar">AR</div>
+
+    <div>
+      <span class="review-name">Arjun R.</span>
+      <span class="review-date">
+        Google Review · December 2024
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- CARD 6 -->
+<div class="review-card reveal">
+  <div class="review-stars">★★★★☆</div>
+
+  <p class="review-text">
+    The cold coffee, music, sea breeze and lighting —
+    everything feels intentionally crafted.
+    You don't just visit this café, you experience it.
+  </p>
+
+  <div class="review-author">
+    <div class="review-avatar">SK</div>
+
+    <div>
+      <span class="review-name">Sai Kiran</span>
+      <span class="review-date">
+        Google Review · November 2024
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- CARD 7 -->
+<div class="review-card reveal">
+  <div class="review-stars">★★★★★</div>
+
+  <p class="review-text">
+    The Writer's Room has this calm luxury energy
+    that's hard to explain. Feels premium without trying too hard.
+  </p>
+
+  <div class="review-author">
+    <div class="review-avatar">DM</div>
+
+    <div>
+      <span class="review-name">Diya M.</span>
+      <span class="review-date">
+        Google Review · October 2024
+      </span>
+    </div>
+  </div>
+</div>
+    </div>
+
+  </div>
+
+</section>
+<!-- RESERVATION -->
+<section class="reservation" id="reservation" style="padding:8rem 4rem">
+  <div class="res-text reveal">
+    <span class="eyebrow">Reserve Your Moment</span>
+    <h2>Book a Table <em>Above the Sea</em></h2>
+    <p>Secure your spot at Visakhapatnam's most cinematic café. Weekend reservations are strongly recommended — mornings for the mist, evenings for the sunset.</p>
+    <p>Walk-ins always welcome based on availability.</p>
+    <div class="res-info">
+      <p>📍 <strong>Location:</strong> Ramanaidu Studios Rd, Rushikonda, Madhuravada, AP 531163</p>
+      <p>📞 <strong>Phone:</strong> +91 81796 86644</p>
+      <p>🕐 <strong>Mon–Fri:</strong> 11 AM – 9 PM &nbsp;|&nbsp; <strong>Sat–Sun:</strong> 11 AM – 10 PM</p>
+    </div>
+  </div>
+  <div class="res-form reveal reveal-delay-2">
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" placeholder="Your name">
+    </div>
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" placeholder="+91 00000 00000">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label>Time</label>
+        <input type="time" min="11:00" max="21:00">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Guests</label>
+        <select>
+          <option>1 person</option>
+          <option>2 people</option>
+          <option selected>3–4 people</option>
+          <option>5–6 people</option>
+          <option>7+ people</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Preference</label>
+        <select>
+          <option>Sea View Terrace</option>
+          <option>Indoor Cozy</option>
+          <option>Any Available</option>
+        </select>
+      </div>
+    </div>
+    <button class="form-submit">Confirm Reservation →</button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-text reveal">
+    <span class="eyebrow">Find Us</span>
+    <h2>Visit The Writer's Room</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div class="contact-item-text">
+          <label>Address</label>
+          <p>Ramanaidu Studios Rd, Rushikonda<br>Madhuravada, Andhra Pradesh 531163</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div class="contact-item-text">
+          <label>Phone</label>
+          <p>+91 81796 86644</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🕐</div>
+        <div class="contact-item-text">
+          <label>Hours</label>
+          <p>Monday – Friday: 11 AM – 9 PM<br>Saturday – Sunday: 11 AM – 10 PM</p>
+        </div>
+      </div>
+    </div>
+    <div class="contact-amenities">
+      <p class="amenities-title">Amenities</p>
+      <div class="amenities-tags">
+        <span class="tag">Free Wi-Fi</span>
+        <span class="tag">Outdoor Seating</span>
+        <span class="tag">Pet-Friendly</span>
+        <span class="tag">Parking</span>
+        <span class="tag">LGBTQ+ Friendly</span>
+        <span class="tag">Work-Friendly</span>
+      </div>
+    </div>
+  </div>
+  <div class="reveal reveal-delay-2">
+    <div class="map-frame">
+      <div class="map-inner"></div>
+      <div class="map-text">
+        <h3>The Writer's Room</h3>
+        <p>Ramanaidu Studios Road<br>Rushikonda, Visakhapatnam</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.634974647981!2d83.39483157517469!3d17.808844483152072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a395b005d649a97%3A0xbde2d62901f3baae!2sThe%20Writer&#39;s%20Room!5e0!3m2!1sen!2sin!4v1779865608367!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">The Writer's <span>Room</span></div>
+  <p class="footer-copy">© 2025 The Writer's Room · Rushikonda, Visakhapatnam</p>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#reservation">Reserve</a>
+  </div>
+</footer>
+
+<script>
+// Menu category tabs
+// MENU FILTER
+
+const filterButtons = document.querySelectorAll('.menu-cat');
+
+const menuCards = document.querySelectorAll('.menu-card');
+
+filterButtons.forEach(button => {
+
+button.addEventListener('click', () => {
+
+filterButtons.forEach(btn =>
+btn.classList.remove('active')
+);
+
+button.classList.add('active');
+
+const filter = button.dataset.filter;
+
+menuCards.forEach(card => {
+
+if(filter === 'all'){
+
+card.style.display = 'block';
+
+}
+
+else if(card.dataset.category === filter){
+
+card.style.display = 'block';
+
+}
+
+else{
+
+card.style.display = 'none';
+
+}
+
+});
+
+});
+
+});
+
+// Scroll reveal
+const revealEls=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');}
+  });
+},{threshold:0.12});
+revealEls.forEach(el=>observer.observe(el));
+
+// Nav scroll effect
+window.addEventListener('scroll',()=>{
+  const nav=document.querySelector('nav');
+  if(window.scrollY>80){
+    nav.style.background='rgba(17,17,17,0.97)';
+    nav.style.backdropFilter='blur(12px)';
+  } else {
+    nav.style.background='linear-gradient(to bottom,rgba(17,17,17,0.9),transparent)';
+    nav.style.backdropFilter='blur(2px)';
+  }
+});
+
+// Form submit
+document.querySelector('.form-submit').addEventListener('click',()=>{
+  const btn=document.querySelector('.form-submit');
+  btn.textContent='✓ Reservation Requested';
+  btn.style.background='#4A6C8C';
+  btn.style.color='#F5F1EA';
+  setTimeout(()=>{btn.textContent='Confirm Reservation →';btn.style.background='';btn.style.color='';},3000);
+});
+/* HERO SLIDER */
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+
+function changeSlide(){
+  setInterval(changeSlide, 5000);
+  slides[currentSlide].classList.remove('active');
+
+  currentSlide = (currentSlide + 1) % slides.length;
+
+  slides[currentSlide].classList.add('active');
+}
+
+
+
+/* =========================
+PREMIUM AUTO REVIEW SCROLL
+========================= */
+
+window.addEventListener('load', () => {
+
+const slider =
+document.querySelector('.reviews-wrapper');
+
+if(!slider) return;
+
+let scrollSpeed = 1.2;
+
+let autoScroll;
+
+/* START AUTO SCROLL */
+function startScroll(){
+
+autoScroll = setInterval(() => {
+
+slider.scrollLeft += scrollSpeed;
+
+/* LOOP */
+if(
+slider.scrollLeft >=
+slider.scrollWidth - slider.clientWidth
+){
+slider.scrollLeft = 0;
+}
+
+}, 16);
+
+}
+
+/* STOP */
+function stopScroll(){
+
+clearInterval(autoScroll);
+
+}
+
+/* START */
+startScroll();
+
+/* HOLD ON HOVER */
+slider.addEventListener('mouseenter', () => {
+
+stopScroll();
+
+});
+
+slider.addEventListener('mouseleave', () => {
+
+startScroll();
+
+});
+
+/* MOBILE TOUCH */
+slider.addEventListener('touchstart', () => {
+
+stopScroll();
+
+});
+
+slider.addEventListener('touchend', () => {
+
+startScroll();
+
+});
+
+/* DRAG FUNCTIONALITY */
+let isDown = false;
+
+let startX;
+
+let scrollLeft;
+
+slider.addEventListener('mousedown', (e) => {
+
+isDown = true;
+
+slider.classList.add('dragging');
+
+startX = e.pageX - slider.offsetLeft;
+
+scrollLeft = slider.scrollLeft;
+
+stopScroll();
+
+});
+
+slider.addEventListener('mouseleave', () => {
+
+isDown = false;
+
+slider.classList.remove('dragging');
+
+startScroll();
+
+});
+
+slider.addEventListener('mouseup', () => {
+
+isDown = false;
+
+slider.classList.remove('dragging');
+
+startScroll();
+
+});
+
+slider.addEventListener('mousemove', (e) => {
+
+if(!isDown) return;
+
+e.preventDefault();
+
+const x = e.pageX - slider.offsetLeft;
+
+const walk = (x - startX) * 2.2;
+
+slider.scrollLeft = scrollLeft - walk;
+
+});
+
+});
+</script>
+</body>
+</html>
